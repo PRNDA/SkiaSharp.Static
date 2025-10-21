@@ -57,8 +57,9 @@ runs:
       working-directory: ${{github.workspace}}
       run: |
         ls
+        pwd
         7z a "skiasharp-externals.src.7z" -r skiasharp/externals
-        #cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE
+        mv "skiasharp-externals.src.7z" $env.GITHUB_WORKSPACE
         #cp "skiasharp.src.7z" "skiasharp.src2.7z"
 
         cd skiasharp/native/windows/libHarfBuzzSharp
@@ -92,4 +93,3 @@ runs:
       run: |
         7z a -y -mx9 $"($env.HarfBuzzSharpName).7z" ./libHarfBuzzSharp.*
         mv $"($env.HarfBuzzSharpName).7z" $env.GITHUB_WORKSPACE
-        mv "skiasharp-externals.src.7z" $env.GITHUB_WORKSPACE
