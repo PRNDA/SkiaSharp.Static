@@ -57,9 +57,9 @@ runs:
       working-directory: ${{github.workspace}}
       run: |
         ls
-        7z a -y -mx9 "skiasharp.src.7z" skiasharp/
-        cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-1.7z
-        
+        7z a -y -mx "skiasharp.src.7z" skiasharp/
+        cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE/
+
         cd skiasharp/native/windows/libHarfBuzzSharp
 
         let msbuild_record = {
