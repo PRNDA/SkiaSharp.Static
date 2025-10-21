@@ -58,7 +58,7 @@ runs:
 
         let msbuild_record = {
             Configuration: "Release"
-            Platform: "x64"
+            Platform: "x86"
             ConfigurationType: "StaticLibrary"
             WindowsTargetPlatformVersion: $env.UCRTVersion
             PlatformToolset: "v143"
