@@ -46,11 +46,11 @@ runs:
         path: |
           skiasharp/externals/skia/third_party
 
-    - name: Build skia
-      shell: nu {0}
-      run: |
-        cd skiasharp/externals/skia
-        autoninja -C $env.BuildDir skia SkiaSharp
+    #- name: Build skia
+    #  shell: nu {0}
+    # run: |
+    #    cd skiasharp/externals/skia
+    #    autoninja -C $env.BuildDir skia SkiaSharp
 
     - name: Build libHarfBuzzSharp
       shell: nu {0}
@@ -58,7 +58,7 @@ runs:
       run: |
         ls
         7z a -y -mx9 "skiasharp.src.7z" skiasharp/
-        mv "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-1.7z
+        cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-1.7z
         
         cd skiasharp/native/windows/libHarfBuzzSharp
 
@@ -77,13 +77,13 @@ runs:
 
     
 
-    - name: Package libSkiaSharp
-      shell: nu {0}
-      working-directory: ${{env.BuildDir}}
-      run: |
-        ls
-        7z a -y -mx9 $"($env.SkiaSharpName).7z" skia.lib SkiaSharp.lib
-        mv $"($env.SkiaSharpName).7z" $env.GITHUB_WORKSPACE
+    #- name: Package libSkiaSharp
+    #  shell: nu {0}
+    #  working-directory: ${{env.BuildDir}}
+    #  run: |
+    #    ls
+    #    7z a -y -mx9 $"($env.SkiaSharpName).7z" skia.lib SkiaSharp.lib
+    #    mv $"($env.SkiaSharpName).7z" $env.GITHUB_WORKSPACE
 
     - name: Package libHarfBuzzSharp
       shell: nu {0}
