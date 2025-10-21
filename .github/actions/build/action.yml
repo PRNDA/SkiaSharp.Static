@@ -58,7 +58,8 @@ runs:
       run: |
         ls
         7z a -y -mx "skiasharp.src.7z" skiasharp/
-        cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE/
+        cp "skiasharp.src.7z" $env.GITHUB_WORKSPACE
+        mv "skiasharp.src.7z" "skiasharp.src2.7z"
 
         cd skiasharp/native/windows/libHarfBuzzSharp
 
@@ -91,4 +92,4 @@ runs:
       run: |
         7z a -y -mx9 $"($env.HarfBuzzSharpName).7z" ./libHarfBuzzSharp.*
         mv $"($env.HarfBuzzSharpName).7z" $env.GITHUB_WORKSPACE
-        mv "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-2.7z
+        mv "skiasharp.src2.7z" $env.GITHUB_WORKSPACE/
