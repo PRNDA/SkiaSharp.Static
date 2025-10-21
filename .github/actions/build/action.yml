@@ -7,6 +7,8 @@ runs:
       shell: nu {0}
       run: |
         mkdir skiasharp $env.BuildDir
+        ls
+        cat args.gn
         mv args.gn $env.BuildDir
 
     - name: Clone source
