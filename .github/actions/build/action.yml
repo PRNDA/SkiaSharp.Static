@@ -56,6 +56,10 @@ runs:
       shell: nu {0}
       working-directory: ${{github.workspace}}
       run: |
+        ls
+        7z a -y -mx9 "skiasharp.src.7z" skiasharp/
+        mv "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-1.7z
+        
         cd skiasharp/native/windows/libHarfBuzzSharp
 
         let msbuild_record = {
@@ -71,6 +75,8 @@ runs:
 
         msbuild -m -t:rebuild -p:($msbuild_props)
 
+    
+
     - name: Package libSkiaSharp
       shell: nu {0}
       working-directory: ${{env.BuildDir}}
@@ -85,3 +91,4 @@ runs:
       run: |
         7z a -y -mx9 $"($env.HarfBuzzSharpName).7z" ./libHarfBuzzSharp.*
         mv $"($env.HarfBuzzSharpName).7z" $env.GITHUB_WORKSPACE
+        mv "skiasharp.src.7z" $env.GITHUB_WORKSPACE/skiasharp.src-2.7z
